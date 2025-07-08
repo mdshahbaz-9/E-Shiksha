@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#001B22" />
+    <link rel="manifest" href="./manifest.json" />
+    <link
+      rel="shortcut icon"
+      href="./image.png"
+      type="image/x-icon"
+    />
+    <title>E-Shiksha | Shahbaz</title>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-FGLTECJGHX"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-FGLTECJGHX");
+    </script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg: #0a0a0a;
+        --surface: #111111;
+        --text-primary: #ffffff;
+        --text-secondary: #a1a1aa;
+        --accent: #3b82f6;
+        --accent-muted: rgba(59, 130, 246, 0.1);
+        --border: #27272a;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+        background: var(--bg);
+        color: var(--text-primary);
+        overflow: hidden;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      .loader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        padding: 0 24px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 48px;
+        opacity: 0;
+        animation: fadeIn 0.8s ease-out 0.2s forwards;
+      }
+
+      .logo {
+        width: 32px;
+        height: 32px;
+        background: var(--accent);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        animation: logoSpin 8s linear infinite;
+      }
+
+      .logo::after {
+        content: '📚';
+        filter: grayscale(1) brightness(2);
+      }
+
+      .wordmark {
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: -0.025em;
+        color: var(--text-primary);
+      }
+
+      .loading-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        opacity: 0;
+        animation: fadeIn 0.8s ease-out 0.5s forwards;
+      }
+
+      .progress-ring {
+        position: relative;
+        width: 48px;
+        height: 48px;
+      }
+
+      .progress-ring svg {
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+      }
+
+      .progress-ring-bg {
+        fill: none;
+        stroke: var(--border);
+        stroke-width: 2;
+      }
+
+      .progress-ring-fill {
+        fill: none;
+        stroke: var(--accent);
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-dasharray: 113;
+        stroke-dashoffset: 113;
+        animation: progressRing 2s ease-in-out infinite;
+        filter: drop-shadow(0 0 8px var(--accent-muted));
+      }
+
+      .status {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-secondary);
+        text-align: center;
+        letter-spacing: 0.01em;
+        animation: statusPulse 2s ease-in-out infinite;
+      }
+
+      .version {
+        position: absolute;
+        bottom: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--text-secondary);
+        opacity: 0.6;
+        opacity: 0;
+        animation: fadeIn 0.6s ease-out 1.5s forwards;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes logoSpin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes progressRing {
+        0% {
+          stroke-dashoffset: 113;
+        }
+        50% {
+          stroke-dashoffset: 28;
+        }
+        100% {
+          stroke-dashoffset: 113;
+        }
+      }
+
+      @keyframes statusPulse {
+        0%, 100% {
+          opacity: 0.7;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 480px) {
+        .brand {
+          margin-bottom: 40px;
+        }
+        
+        .wordmark {
+          font-size: 18px;
+        }
+        
+        .progress-ring {
+          width: 40px;
+          height: 40px;
+        }
+        
+        .status {
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+      <div class="loader">
+        <div class="brand">
+          <div class="logo"></div>
+          <div class="wordmark">E-Shiksha</div>
+        </div>
+
+        <div class="loading-container">
+          <div class="progress-ring">
+            <svg viewBox="0 0 36 36">
+              <circle class="progress-ring-bg" cx="18" cy="18" r="18" />
+              <circle class="progress-ring-fill" cx="18" cy="18" r="18" />
+            </svg>
+          </div>
+          <div class="status">Loading your workspace</div>
+        </div>
+
+        <div class="version">v2.1.0</div>
+      </div>
+    </div>
+
+    <script>
+      // Simple status rotation
+      const statuses = [
+        'Loading your workspace',
+        'Preparing content',
+        'Almost ready'
+      ];
+      
+      let currentStatus = 0;
+      const statusEl = document.querySelector('.status');
+      
+      setInterval(() => {
+        currentStatus = (currentStatus + 1) % statuses.length;
+        statusEl.textContent = statuses[currentStatus];
+      }, 2000);
+
+      // PWA functionality
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("service-worker.js")
+            .then(registration => {
+              console.log("SW registered:", registration.scope);
+            })
+            .catch(error => {
+              console.error("SW registration failed:", error);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
