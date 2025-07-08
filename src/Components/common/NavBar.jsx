@@ -5,7 +5,7 @@ import { Link, matchPath } from "react-router-dom";
 import { NavbarLinks } from "../../data/navbar-links";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { TiShoppingCart } from "react-icons/ti";
+import { TiShoppingCart } from "react-icons/ti";  
 import ProfileDropDown from "../core/Auth/ProfileDropDown";
 import { categories } from "../../services/apis";
 import { apiConnector } from "../../services/apiConnector";
