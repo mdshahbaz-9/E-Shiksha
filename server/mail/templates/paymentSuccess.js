@@ -67,8 +67,8 @@ exports.paymentSuccess = (amount, paymentId, orderId, name,lastname) => {
     
     <body>
         <div class="container">
-            <a href="https://studynotion-edtech-project.vercel.app"><img class="logo" src="https://i.ibb.co/7Xyj3PC/logo.png"
-                    alt="StudyNotion Logo"></a>
+            <a href="https://e-shiksha-v8yj.vercel.app/"><img class="logo" src="https://ibb.co/8LFCBDT4/logo.png"
+                    alt="E-Shiksha Logo"></a>
             <div class="message">
             Your payment of ₹${amount} has been successfully received.
             </div>

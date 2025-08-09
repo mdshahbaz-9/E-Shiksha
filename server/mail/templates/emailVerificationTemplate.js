@@ -396,9 +396,7 @@ const otpTemplate = (otp) => {
     <body>
         <div class="email-container">
             <div class="header">
-                <a href="https://studynotion-edtech-project.vercel.app">
-                    <img class="logo" src="https://i.ibb.co/7Xyj3PC/logo.png" alt="StudyNotion Logo">
-                </a>
+               
                 <div class="header-title">Account Verification</div>
                 <div class="header-subtitle">Secure access to your account</div>
             </div>
@@ -407,7 +405,7 @@ const otpTemplate = (otp) => {
                 <div class="greeting">Dear User,</div>
                 
                 <div class="message-text">
-                    Thank you for registering with StudyNotion. To ensure the security of your account and complete your registration, please verify your email address using the One-Time Password (OTP) provided below.
+                    Thank you for registering with  E-shiksha. To ensure the security of your account and complete your registration, please verify your email address using the One-Time Password (OTP) provided below.
                 </div>
                 
                 <div class="otp-section">
@@ -438,7 +436,7 @@ const otpTemplate = (otp) => {
                     <ul class="instructions-list">
                         <li>
                             <div class="step-number">1</div>
-                            <div>Return to the StudyNotion registration page where you left off</div>
+                            <div>Return to the E-shiksha registration page where you left off</div>
                         </li>
                         <li>
                             <div class="step-number">2</div>
@@ -472,13 +470,13 @@ const otpTemplate = (otp) => {
                     This is an automated security email. Please do not reply to this message.
                 </div>
                 <div class="footer-links">
-                    <a href="https://studynotion-edtech-project.vercel.app" class="footer-link">Learning Platform</a>
+                    <a href="https://e-shiksha-v8yj.vercel.app/" class="footer-link">Learning Platform</a>
                     <a href="#" class="footer-link">Help Center</a>
                     <a href="#" class="footer-link">Privacy Policy</a>
                     <a href="#" class="footer-link">Terms of Service</a>
                 </div>
                 <div class="footer-copyright">
-                    © 2025 StudyNotion. All rights reserved.
+                    © 2025 E-shiksha. All rights reserved.
                 </div>
             </div>
         </div>

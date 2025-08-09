@@ -25,10 +25,11 @@ exports.resetPasswordToken = async (req, res) => {
     );
     console.log("DETAILS", updatedDetails);
      // For development, use localhost
-    const url = `http://localhost:3000/update-password/${token}`
+    // const url = `http://localhost:3000/update-password/${token}`
+    
 
     // For production, use the actual domain instead of localhost
-    // const url = `https://studynotion.fun/update-password/${token}`;
+     const url = `https://e-shiksha-v8yj.vercel.app/update-password/${token}`
 
     await mailSender(
       email,

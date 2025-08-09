@@ -391,7 +391,7 @@ exports.courseEnrollmentEmail = (courseName, name) => {
     <body>
         <div class="email-container">
             <div class="header">
-                <a href="https://studynotion-edtech-project.vercel.app">
+                <a href="https://e-shiksha-v8yj.vercel.app">
                     <img class="logo" src="https://sdmntpreastus.oaiusercontent.com/files/00000000-7bc4-61f9-9eec-13ef82f38b87/raw?se=2025-07-04T19%3A35%3A17Z&sp=r&sv=2024-08-04&sr=b&scid=90f365a6-48a9-59b4-ac5c-bff9239b6d28&skoid=b0fd38cc-3d33-418f-920e-4798de4acdd1&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-04T08%3A15%3A55Z&ske=2025-07-05T08%3A15%3A55Z&sks=b&skv=2024-08-04&sig=/zrWBz//dmTmAj841VxMOsVKNoe5Zlw//TR6nyMeJSg%3D" alt="E-Shiksha Logo">
                 </a>
                 <div class="header-title">Course Registration Confirmed</div>
@@ -446,7 +446,7 @@ exports.courseEnrollmentEmail = (courseName, name) => {
                 </div>
                 
                 <div class="cta-section">
-                    <a class="cta-button" href="https://studynotion-edtech-project.vercel.app/dashboard">
+                    <a class="cta-button" href="https://e-shiksha-v8yj.vercel.app/dashboard">
                         Access Dashboard
                         <span class="cta-icon">→</span>
                     </a>
@@ -469,7 +469,7 @@ exports.courseEnrollmentEmail = (courseName, name) => {
                     This email confirms your course enrollment. Please save this email for your records.
                 </div>
                 <div class="footer-links">
-                    <a href="https://studynotion-edtech-project.vercel.app" class="footer-link">Learning Platform</a>
+                    <a href="https://e-shiksha-v8yj.vercel.app" class="footer-link">Learning Platform</a>
                     <a href="#" class="footer-link">Course Catalog</a>
                     <a href="#" class="footer-link">Support Center</a>
                     <a href="#" class="footer-link">Privacy Policy</a>

@@ -151,7 +151,7 @@ exports.passwordUpdated = (email, name) => {
             </div>
             
             <div class="message">
-                Your password has been successfully updated for your StudyNotion account.
+                Your password has been successfully updated for your  E-shiksha account.
             </div>
             
             <div class="email-info">
@@ -178,7 +178,7 @@ exports.passwordUpdated = (email, name) => {
         </div>
         
         <div class="footer">
-            <p>© 2024 StudyNotion. All rights reserved.</p>
+            <p>© 2024  E-shiksha. All rights reserved.</p>
             <p>This is an automated message. Please do not reply to this email.</p>
         </div>
     </div>
