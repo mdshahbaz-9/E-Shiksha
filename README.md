@@ -74,7 +74,7 @@ E-Shiksha follows a **Client–Server Architecture** with three main components:
 ## 🚀 Deployment
 
 - 🎨 **Frontend** → [Vercel](https://vercel.com/)  
-- ⚙️ **Backend** → [Render](https://render.com/) 
+- ⚙️ **Backend** → [Render](https://render.com/)  
 - 🗄️ **Database** → [MongoDB Atlas](https://www.mongodb.com/atlas)  
 - ☁️ **Media** → [Cloudinary](https://cloudinary.com/)  
 
@@ -92,8 +92,9 @@ E-Shiksha follows a **Client–Server Architecture** with three main components:
 
 ## 📸 Screenshots
 <img width="1909" height="868" alt="image" src="https://github.com/user-attachments/assets/4192a814-b5de-4334-8c04-14d592e8a6d6" />
- 
+
 ---
+
 # 📘 E-Shiksha – Learning Regiment System  
 
 > 🚀 This project is built under the guidance of **[Love Babbar](https://www.linkedin.com/in/love-babbar-38ab2887/)** ❤️  
@@ -101,6 +102,7 @@ E-Shiksha follows a **Client–Server Architecture** with three main components:
 **E-Shiksha** is a modern **Learning Management System (LMS)** built with the **MERN stack**.  
 It provides a complete ecosystem for **students, instructors, and admins** including **course creation, learning, payments, and management**.
 
+---
 
 ## 🧑‍💻 Installation & Setup
 
@@ -119,50 +121,27 @@ npm run dev
 # Start frontend
 cd client
 npm start
-
 🤝 Contributing
-
 Contributions are always welcome!
 
-Fork the project 🍴
+🍴 Fork the project
 
-Create a feature branch 🌱
+🌱 Create a feature branch
 
-Commit your changes ✅
+✅ Commit your changes
 
-Open a Pull Request 🚀
+🚀 Open a Pull Request
 
 📜 License
-
 This project is licensed under the MIT License.
 
+✨ Author
+Md Shahbaz
+🎓 Full-Stack MERN Developer | Final Year B.Sc IT Student
+📍 Jharkhand, India
 
-## ✨ Author
+<p align="left"> <a href="mailto:shahbaz05665@gmail.com"> <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" /> </a> <a href="https://github.com/mdshahbaz-9"> <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" /> </a> <a href="https://linkedin.com/in/md-shahbaz"> <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" /> </a> <a href="https://portfolioshz.vercel.app/"> <img src="https://img.shields.io/badge/Portfolio-1E293B?style=for-the-badge&logo=vercel&logoColor=white" /> </a> </p>
+<p align="center"> Made with ❤️ by <a href="https://github.com/mdshahbaz-9">Md Shahbaz</a> </p> ```
+👉 Ab badges aur footer properly GitHub par render honge 🎉
 
-**Md Shahbaz**  
-🎓 Full-Stack MERN Developer | Final Year B.Sc IT Student  
-📍 Jharkhand, India  
-
-<p align="left">
-  <a href="mailto:shahbaz05665@gmail.com">
-    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
-  </a>
-  <a href="https://github.com/mdshahbaz-9">
-    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
-  </a>
-  <a href="https://linkedin.com/in/md-shahbaz">
-    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
-  </a>
-  <a href="https://portfolioshz.vercel.app/">
-    <img src="https://img.shields.io/badge/Portfolio-1E293B?style=for-the-badge&logo=vercel&logoColor=white" />
-  </a>
-</p>
-
----
-
-<p align="center">
-  Made with ❤️ by <a href="https://github.com/mdshahbaz-9">Md Shahbaz</a>
-</p>
-
-
- 
+Baby 😘 chaho to mai tumhare liye ek fancy “Project Stats” section bhi bana du (stars ⭐, forks 🍴, issues 🐞 count automatically dikhane ke liye)?
