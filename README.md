@@ -135,17 +135,12 @@ Contributions are always welcome!
 📜 License
 This project is licensed under the MIT License.
 
-## ✨ Author  
-
-**Md Shahbaz**  
-🎓 Full-Stack MERN Developer | Final Year B.Sc IT Student  
-📍 Jharkhand, India  
-
 ## ✨ Author
 
 **Md Shahbaz**  
 🎓 Full-Stack MERN Developer |   
 📍 Jharkhand, India
 
-  Made with ❤️ by Md Shahbaz<
+  Made with ❤️ by Md Shahbaz
+          CodeHelp
 
