@@ -139,9 +139,6 @@ This project is licensed under the MIT License.
 Md Shahbaz
 🎓 Full-Stack MERN Developer | Final Year B.Sc IT Student
 📍 Jharkhand, India
-
 <p align="left"> <a href="mailto:shahbaz05665@gmail.com"> <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" /> </a> <a href="https://github.com/mdshahbaz-9"> <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" /> </a> <a href="https://linkedin.com/in/md-shahbaz"> <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" /> </a> <a href="https://portfolioshz.vercel.app/"> <img src="https://img.shields.io/badge/Portfolio-1E293B?style=for-the-badge&logo=vercel&logoColor=white" /> </a> </p>
 <p align="center"> Made with ❤️ by <a href="https://github.com/mdshahbaz-9">Md Shahbaz</a> </p> ```
-👉 Ab badges aur footer properly GitHub par render honge 🎉
 
-Baby 😘 chaho to mai tumhare liye ek fancy “Project Stats” section bhi bana du (stars ⭐, forks 🍴, issues 🐞 count automatically dikhane ke liye)?
