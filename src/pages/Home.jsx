@@ -18,7 +18,6 @@ import { useState } from "react";
 import RatingSlider from "../Components/core/Ratings/RatingSlider";
 import TimelineSection2 from "../Components/core/HomePage/TimelineSection2";
 
-
 function Home() {
   const [CatalogPageData, setCatalogPageData] = useState(null);
   const categoryID = "683d5a8436ba60c2aadaeb8c";
@@ -66,7 +65,8 @@ function Home() {
         </Link>
 
         <div className="text-center text-3xl md:text-4xl font-semibold mt-7">
-        Unlock Your Potential Through  <HighlightText text={"Coding Expertise"} />
+          Unlock Your Potential Through{" "}
+          <HighlightText text={"Coding Expertise"} />
         </div>
 
         <div className=" mt-4 w-[90%] text-left md:text-center text-sm md:text-lg font-bold text-richblack-300">
@@ -74,7 +74,10 @@ function Home() {
           anywhere in the world, and get access to a wealth of resources,
           including hands-on projects, quizzes, and personalized feedback from
           instructors. */}
-          Through our online coding classes, you can study at your own speed, from any location, and benefit from a rich collection of materials, such as interactive projects, assessments, and tailored guidance from mentors
+          Through our online coding classes, you can study at your own speed,
+          from any location, and benefit from a rich collection of materials,
+          such as interactive projects, assessments, and tailored guidance from
+          mentors
         </div>
 
         <div className="flex flex-row gap-7 mt-8">
@@ -85,7 +88,8 @@ function Home() {
             Book a Demo
           </CTAButton>
         </div>
-
+        {/* //............................................................... */}
+        
         {/* <div className="mx-3 my-12 shadow-blue-200 w-[70%] relative">
           <div className="grad2 -top-10 w-[800px]"></div>
           <video className="video" muted loop autoPlay>
@@ -95,77 +99,124 @@ function Home() {
 
         {/* //............................................................... */}
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-16">
-          <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-2xl p-6 border border-white/20 hover:border-cyan-400/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
-            <div className="w-14 h-14 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center mb-4 group-hover:rotate-6 transition-transform duration-300">
-              <div className="w-6 h-6 bg-white rounded-sm"></div>
-            </div>
-            <h3 className="text-white font-bold text-lg mb-2">
-              Interactive Learning
-            </h3>
-            <p className="text-slate-400 text-sm group-hover:text-slate-300 transition-colors">
-              Hands-on coding experiences
-            </p>
-          </div>
-
-          <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-2xl p-6 border border-white/20 hover:border-purple-400/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
-            <div className="w-14 h-14 bg-gradient-to-br from-purple-400 to-violet-500 rounded-xl flex items-center justify-center mb-4 group-hover:rotate-6 transition-transform duration-300">
-              <div className="w-6 h-6 bg-white rounded-full"></div>
-            </div>
-            <h3 className="text-white font-bold text-lg mb-2">
-              Expert Mentors
-            </h3>
-            <p className="text-slate-400 text-sm group-hover:text-slate-300 transition-colors">
-              Industry professionals guide you
-            </p>
-          </div>
-
-          <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-2xl p-6 border border-white/20 hover:border-pink-400/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/20">
-            <div className="w-14 h-14 bg-gradient-to-br from-pink-400 to-rose-500 rounded-xl flex items-center justify-center mb-4 group-hover:rotate-6 transition-transform duration-300">
-              <div className="w-6 h-6 bg-white rounded-lg transform rotate-45"></div>
-            </div>
-            <h3 className="text-white font-bold text-lg mb-2">
-              Certified Courses
-            </h3>
-            <p className="text-slate-400 text-sm group-hover:text-slate-300 transition-colors">
-              Industry-recognized credentials
-            </p>
-          </div>
-
-          <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-2xl p-6 border border-white/20 hover:border-emerald-400/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20">
-            <div className="w-14 h-14 bg-gradient-to-br from-emerald-400 to-green-500 rounded-xl flex items-center justify-center mb-4 group-hover:rotate-6 transition-transform duration-300">
-              <div className="w-6 h-6 bg-white rounded-full relative">
-                <div className="absolute inset-2 bg-emerald-400 rounded-full"></div>
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          {/* Feature Cards Grid */}
+          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-12 md:mt-16">
+            {/* Feature 1: Interactive Learning */}
+            <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-white/20 hover:border-cyan-400/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:rotate-6 transition-transform duration-300">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 bg-white rounded-sm"></div>
               </div>
+              <h3 className="text-white font-bold text-base sm:text-lg mb-1.5 sm:mb-2">
+                Interactive Learning
+              </h3>
+              <p className="text-slate-400 text-xs sm:text-sm group-hover:text-slate-300 transition-colors leading-relaxed">
+                Hands-on coding experiences
+              </p>
             </div>
-            <h3 className="text-white font-bold text-lg mb-2">
-              Fast Track Learning
-            </h3>
-            <p className="text-slate-400 text-sm group-hover:text-slate-300 transition-colors">
-              Accelerated skill development
-            </p>
+
+            {/* Feature 2: Expert Mentors */}
+            <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-white/20 hover:border-purple-400/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-purple-400 to-violet-500 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:rotate-6 transition-transform duration-300">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 bg-white rounded-full"></div>
+              </div>
+              <h3 className="text-white font-bold text-base sm:text-lg mb-1.5 sm:mb-2">
+                Expert Mentors
+              </h3>
+              <p className="text-slate-400 text-xs sm:text-sm group-hover:text-slate-300 transition-colors leading-relaxed">
+                Industry professionals guide you
+              </p>
+            </div>
+
+            {/* Feature 3: Certified Courses */}
+            <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-white/20 hover:border-pink-400/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/20">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-pink-400 to-rose-500 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:rotate-6 transition-transform duration-300">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 bg-white rounded-lg transform rotate-45"></div>
+              </div>
+              <h3 className="text-white font-bold text-base sm:text-lg mb-1.5 sm:mb-2">
+                Certified Courses
+              </h3>
+              <p className="text-slate-400 text-xs sm:text-sm group-hover:text-slate-300 transition-colors leading-relaxed">
+                Industry-recognized credentials
+              </p>
+            </div>
+
+            {/* Feature 4: Fast Track Learning */}
+            <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-white/20 hover:border-emerald-400/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-emerald-400 to-green-500 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:rotate-6 transition-transform duration-300">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 bg-white rounded-full relative">
+                  <div className="absolute inset-2 bg-emerald-400 rounded-full"></div>
+                </div>
+              </div>
+              <h3 className="text-white font-bold text-base sm:text-lg mb-1.5 sm:mb-2">
+                Fast Track Learning
+              </h3>
+              <p className="text-slate-400 text-xs sm:text-sm group-hover:text-slate-300 transition-colors leading-relaxed">
+                Accelerated skill development
+              </p>
+            </div>
+          </div>
+
+          {/* Feature Highlights - Responsive badges */}
+          <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 mt-6 sm:mt-8 text-xs sm:text-sm">
+            <div className="flex items-center gap-1.5 sm:gap-2 text-cyan-400 bg-cyan-400/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-cyan-400/20 hover:bg-cyan-400/20 transition-all duration-300">
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+              <span className="font-medium whitespace-nowrap">
+                Interactive Learning
+              </span>
+            </div>
+
+            <div className="flex items-center gap-1.5 sm:gap-2 text-purple-400 bg-purple-400/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-purple-400/20 hover:bg-purple-400/20 transition-all duration-300">
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-400 rounded-full animate-pulse"></div>
+              <span className="font-medium whitespace-nowrap">
+                Expert Mentors
+              </span>
+            </div>
+
+            <div className="flex items-center gap-1.5 sm:gap-2 text-pink-400 bg-pink-400/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-pink-400/20 hover:bg-pink-400/20 transition-all duration-300">
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-pink-400 rounded-full animate-pulse"></div>
+              <span className="font-medium whitespace-nowrap">
+                Certified Courses
+              </span>
+            </div>
+
+            {/* This badge shows on larger screens */}
+            <div className="hidden sm:flex items-center gap-1.5 sm:gap-2 text-emerald-400 bg-emerald-400/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-emerald-400/20 hover:bg-emerald-400/20 transition-all duration-300">
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+              <span className="font-medium whitespace-nowrap">Fast Track</span>
+            </div>
           </div>
         </div>
 
-        {/* Added feature highlights */}
+        {/* Optional: Add this to your CSS/Tailwind config for extra small breakpoint */}
+        <style jsx>{`
+          @media (min-width: 475px) {
+            .xs\:grid-cols-2 {
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+          }
 
-        <div className="flex justify-center items-center gap-8 mt-8 text-sm">
-          <div className="flex items-center gap-2 text-cyan-400">
-            <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-            <span>Interactive Learning</span>
-          </div>
-          <div className="flex items-center gap-2 text-purple-400">
-            <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-            <span>Expert Mentors</span>
-          </div>
-          <div className="flex items-center gap-2 text-pink-400">
-            <div className="w-2 h-2 bg-pink-400 rounded-full"></div>
-            <span>Certified Courses</span>
-          </div>
-        </div>
+          /* Smooth animations for mobile */
+          @media (prefers-reduced-motion: reduce) {
+            .group {
+              transition: none;
+            }
 
-        {/* //............................................................... */}
+            .animate-pulse {
+              animation: none;
+            }
+          }
 
+          /* Better touch targets for mobile */
+          @media (max-width: 640px) {
+            .group {
+              cursor: pointer;
+              -webkit-tap-highlight-color: transparent;
+            }
+          }
+        `}</style>
+
+        {/* .............................................................. */}
         <div>
           <CodeBlocks
             position={"lg:flex-row"}
@@ -254,7 +305,7 @@ function Home() {
 
         <ExploreMore />
       </div>
-      
+
       <div className="hidden lg:block lg:h-[200px]"></div>
 
       <div className="bg-gradient-to-br from-richblack-900 to-richblack-800 text-white">
@@ -275,8 +326,7 @@ function Home() {
           </div>
         </div>
 
-        <TimelineSection2 />
-
+        {/* <TimelineSection2 /> */}
 
         <div className="mx-auto w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-7">
           <div className="flex flex-row gap-5 mb-10 mt-[95px]">
@@ -287,9 +337,8 @@ function Home() {
 
             <div className="flex flex-col gap-10 w-[40%] items-start">
               <div className="text-[16px]">
-                The modern E-Shiksha is the dictates its own terms. Today, to
-                be a competitive specialist requires more than professional
-                skills.
+                The modern E-Shiksha is the dictates its own terms. Today, to be
+                a competitive specialist requires more than professional skills.
               </div>
               <CTAButton active={true} linkto={"/signup"}>
                 <div>Learn more</div>
