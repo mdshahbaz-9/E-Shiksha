@@ -18,6 +18,126 @@ import { useState } from "react";
 import RatingSlider from "../Components/core/Ratings/RatingSlider";
 import TimelineSection2 from "../Components/core/HomePage/TimelineSection2";
 
+// ── Test Credentials Modal ───────────────────────────────────────────────────
+function CopyBtn({ value }) {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(value);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+  return (
+    <button
+      onClick={handleCopy}
+      className="text-[10px] px-2 py-0.5 rounded border border-richblack-600 text-richblack-300 hover:border-yellow-300 hover:text-yellow-300 transition-all duration-150 shrink-0"
+    >
+      {copied ? "✓ Copied" : "Copy"}
+    </button>
+  );
+}
+
+// ── Test Credentials — Fixed Top Left Floating Dropdown ─────────────────────
+function TestCredentials() {
+  const [open, setOpen] = useState(false);
+  const accounts = [
+    {
+      role: "Student",
+      email: "test.student@eshiksha.com",
+      password: "Student@123",
+      color: "#22d3ee",
+    },
+    {
+      role: "Instructor",
+      email: "test.instructor@eshiksha.com",
+      password: "Instructor@123",
+      color: "#a78bfa",
+    },
+  ];
+
+  return (
+    <>
+      {/* Fixed Top-Left Container */}
+      <div className="fixed top-20 left-4 z-50 w-56">
+        {/* Toggle Header */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-richblack-900 border border-richblack-700 hover:border-yellow-400 transition-all duration-200 shadow-xl group"
+        >
+          <div className="flex items-center gap-2">
+            <span className="text-sm">🔑</span>
+            <span className="text-xs font-semibold text-richblack-100 group-hover:text-yellow-300 transition-colors">
+              Test Credentials
+            </span>
+          </div>
+          <span
+            className="text-richblack-500 text-xs transition-transform duration-300"
+            style={{
+              display: "inline-block",
+              transform: open ? "rotate(180deg)" : "rotate(0deg)",
+            }}
+          >
+            ▾
+          </span>
+        </button>
+
+        {/* Dropdown Panel */}
+        {open && (
+          <div className="mt-1.5 rounded-xl bg-richblack-900 border border-richblack-700 shadow-2xl overflow-hidden">
+            {accounts.map((acc, i) => (
+              <div
+                key={acc.role}
+                className={`px-3 py-3 ${i < accounts.length - 1 ? "border-b border-richblack-800" : ""}`}
+              >
+                {/* Role label */}
+                <div className="flex items-center gap-1.5 mb-2">
+                  <span
+                    className="w-1.5 h-1.5 rounded-full"
+                    style={{ background: acc.color, display: "inline-block" }}
+                  />
+                  <span
+                    className="text-[11px] font-bold"
+                    style={{ color: acc.color }}
+                  >
+                    {acc.role}
+                  </span>
+                </div>
+
+                {/* Email */}
+                <div className="flex items-center justify-between gap-1 mb-1.5 bg-richblack-800 rounded-lg px-2 py-1.5">
+                  <span className="text-[10px] text-richblack-300 font-mono truncate flex-1">
+                    {acc.email}
+                  </span>
+                  <CopyBtn value={acc.email} />
+                </div>
+
+                {/* Password */}
+                <div className="flex items-center justify-between gap-1 bg-richblack-800 rounded-lg px-2 py-1.5">
+                  <span className="text-[10px] text-richblack-300 font-mono flex-1">
+                    {acc.password}
+                  </span>
+                  <CopyBtn value={acc.password} />
+                </div>
+              </div>
+            ))}
+
+            <div className="px-3 py-1.5 bg-richblack-800/40 border-t border-richblack-800">
+              <p className="text-[9px] text-richblack-600 text-center tracking-wide">
+                click outside to close
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Invisible overlay to close on outside click */}
+      {open && (
+        <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
+      )}
+    </>
+  );
+}
+// ────────────────────────────────────────────────────────────────────────────
+
 function Home() {
   const [CatalogPageData, setCatalogPageData] = useState(null);
   const categoryID = "683d5a8436ba60c2aadaeb8c";
@@ -26,7 +146,6 @@ function Home() {
     const fetchCatalogPageData = async () => {
       const result = await getCatalogaPageData(categoryID, dispatch);
       setCatalogPageData(result);
-      // console.log("page data",CatalogPageData);
     };
     if (categoryID) {
       fetchCatalogPageData();
@@ -43,8 +162,6 @@ function Home() {
           }}
           to={"/signup"}
         >
-          {/* More amazing courses coming soon... */}
-
           <div className="text-center mt-14">
             <div className="inline-flex items-center space-x-4 px-8 py-4 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-full border border-white/20 backdrop-blur-xl">
               <div className="flex space-x-2">
@@ -70,10 +187,6 @@ function Home() {
         </div>
 
         <div className=" mt-4 w-[90%] text-left md:text-center text-sm md:text-lg font-bold text-richblack-300">
-          {/* With our online coding courses, you can learn at your own pace, from
-          anywhere in the world, and get access to a wealth of resources,
-          including hands-on projects, quizzes, and personalized feedback from
-          instructors. */}
           Through our online coding classes, you can study at your own speed,
           from any location, and benefit from a rich collection of materials,
           such as interactive projects, assessments, and tailored guidance from
@@ -88,16 +201,11 @@ function Home() {
             Book a Demo
           </CTAButton>
         </div>
-        {/* //............................................................... */}
-        
-        {/* <div className="mx-3 my-12 shadow-blue-200 w-[70%] relative">
-          <div className="grad2 -top-10 w-[800px]"></div>
-          <video className="video" muted loop autoPlay>
-            <source src={Banner} type="video/mp4" />
-          </video>
-        </div> */}
 
-        {/* //............................................................... */}
+        {/* Test Credentials Button → opens modal */}
+        <div className="mt-3">
+          <TestCredentials />
+        </div>
 
         <div className="w-full px-4 sm:px-6 lg:px-8">
           {/* Feature Cards Grid */}
@@ -157,7 +265,7 @@ function Home() {
             </div>
           </div>
 
-          {/* Feature Highlights - Responsive badges */}
+          {/* Feature Highlights */}
           <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 mt-6 sm:mt-8 text-xs sm:text-sm">
             <div className="flex items-center gap-1.5 sm:gap-2 text-cyan-400 bg-cyan-400/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-cyan-400/20 hover:bg-cyan-400/20 transition-all duration-300">
               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-cyan-400 rounded-full animate-pulse"></div>
@@ -165,22 +273,18 @@ function Home() {
                 Interactive Learning
               </span>
             </div>
-
             <div className="flex items-center gap-1.5 sm:gap-2 text-purple-400 bg-purple-400/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-purple-400/20 hover:bg-purple-400/20 transition-all duration-300">
               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-400 rounded-full animate-pulse"></div>
               <span className="font-medium whitespace-nowrap">
                 Expert Mentors
               </span>
             </div>
-
             <div className="flex items-center gap-1.5 sm:gap-2 text-pink-400 bg-pink-400/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-pink-400/20 hover:bg-pink-400/20 transition-all duration-300">
               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-pink-400 rounded-full animate-pulse"></div>
               <span className="font-medium whitespace-nowrap">
                 Certified Courses
               </span>
             </div>
-
-            {/* This badge shows on larger screens */}
             <div className="hidden sm:flex items-center gap-1.5 sm:gap-2 text-emerald-400 bg-emerald-400/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-emerald-400/20 hover:bg-emerald-400/20 transition-all duration-300">
               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-emerald-400 rounded-full animate-pulse"></div>
               <span className="font-medium whitespace-nowrap">Fast Track</span>
@@ -188,26 +292,20 @@ function Home() {
           </div>
         </div>
 
-        {/* Optional: Add this to your CSS/Tailwind config for extra small breakpoint */}
         <style jsx>{`
           @media (min-width: 475px) {
             .xs\:grid-cols-2 {
               grid-template-columns: repeat(2, minmax(0, 1fr));
             }
           }
-
-          /* Smooth animations for mobile */
           @media (prefers-reduced-motion: reduce) {
             .group {
               transition: none;
             }
-
             .animate-pulse {
               animation: none;
             }
           }
-
-          /* Better touch targets for mobile */
           @media (max-width: 640px) {
             .group {
               cursor: pointer;
@@ -216,7 +314,6 @@ function Home() {
           }
         `}</style>
 
-        {/* .............................................................. */}
         <div>
           <CodeBlocks
             position={"lg:flex-row"}
@@ -235,16 +332,13 @@ function Home() {
               linkto: "/signup",
               active: true,
             }}
-            ctabtn2={{
-              btnText: "learn more",
-              linkto: "/login",
-              active: false,
-            }}
+            ctabtn2={{ btnText: "learn more", linkto: "/login", active: false }}
             codeblock={`<<!DOCTYPE html>\n<html>\n<head><title>e-shiksha</title>\n</head>\n<body>\n<h1><ahref="/">shahbaz</a>\n</h1>\n<nav><ahref="one/">One</a><ahref="two/">Two</a><ahref="three/">Three</a>\n</nav>`}
             codeColor={"text-rose-800"}
             backgroudGradient={"grad2"}
           />
         </div>
+
         <div className=" mx-auto box-content w-full max-w-maxContentTab px- py-12 lg:max-w-maxContent">
           <h2 className="section_heading mb-6 md:text-3xl text-xl">
             Most Popular Courses
@@ -258,23 +352,6 @@ function Home() {
           <CourseSlider Courses={CatalogPageData?.differentCourses} />
         </div>
 
-        {/* <div className="mx-auto w-full max-w-7xl px-4 py-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">
-            Most Popular Courses
-          </h2>
-          <div className="bg-whte shadow-xl rounded-3xl px-6 py-10 mb-16">
-            <CourseSlider Courses={CatalogPageData?.selectedCourses} />
-          </div>
-
-          <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">
-            Students are Learning
-          </h2>
-          <div className="bg-richblue-600 shadow-xl rounded-3xl px-6 py-10">
-            <CourseSlider Courses={CatalogPageData?.differentCourses} />
-          </div>
-        </div> */}
-
-        {/* Code Section 2 */}
         <div>
           <CodeBlocks
             position={"lg:flex-row-reverse"}
@@ -292,11 +369,7 @@ function Home() {
               linkto: "/signup",
               active: true,
             }}
-            ctabtn2={{
-              btnText: "learn more",
-              linkto: "/login",
-              active: false,
-            }}
+            ctabtn2={{ btnText: "learn more", linkto: "/login", active: false }}
             codeblock={`<<!DOCTYPE html>\n<html>\n<head><title>Example</title>\n</head>\n<body>\n<h1><ahref="/">Header</a>\n</h1>\n<nav><ahref="one/">One</a><ahref="two/">Two</a><ahref="three/">Three</a>\n</nav>`}
             codeColor={"text-caribbeangreen-200"}
             backgroudGradient={"grad"}
@@ -326,15 +399,12 @@ function Home() {
           </div>
         </div>
 
-        {/* <TimelineSection2 /> */}
-
         <div className="mx-auto w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-7">
           <div className="flex flex-row gap-5 mb-10 mt-[95px]">
             <div className="text-4xl font-semibold w-[45%]">
               Get the Skills you need for a
               <HighlightText text={"Job that is in demand"} />
             </div>
-
             <div className="flex flex-col gap-10 w-[40%] items-start">
               <div className="text-[16px]">
                 The modern E-Shiksha is the dictates its own terms. Today, to be
@@ -347,15 +417,12 @@ function Home() {
           </div>
 
           <TimelineSection />
-
           <LearningLanguageSection />
         </div>
       </div>
 
       <div className="w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8 first-letter bg-richblack-900 text-white">
         <InstructorSection />
-
-        {/* Review Slider here */}
       </div>
 
       <div className=" mb-16 mt-3">
