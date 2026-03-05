@@ -1,9 +1,447 @@
+// import React from "react";
+// import { FaArrowRight } from "react-icons/fa";
+// import { Link } from "react-router-dom";
+// import CTAButton from "../Components/core/HomePage/Button";
+// import HighlightText from "../Components/core/HomePage/HighlightText";
+// import Banner from "../assets/Images/banner.mp4";
+// import CodeBlocks from "../Components/core/HomePage/CodeBlocks";
+// import TimelineSection from "../Components/core/HomePage/TimelineSection";
+// import LearningLanguageSection from "../Components/core/HomePage/LearningLanguageSection";
+// import InstructorSection from "../Components/core/HomePage/InstructorSection";
+// import ExploreMore from "../Components/core/HomePage/ExploreMore";
+// import { useDispatch } from "react-redux";
+// import { setProgress } from "../slices/loadingBarSlice";
+// import { getCatalogaPageData } from "../services/operations/pageAndComponentData";
+// import CourseSlider from "../Components/core/Catalog/CourseSlider";
+// import { useEffect } from "react";
+// import { useState } from "react";
+// import RatingSlider from "../Components/core/Ratings/RatingSlider";
+// import TimelineSection2 from "../Components/core/HomePage/TimelineSection2";
+
+// // ── Test Credentials Modal ───────────────────────────────────────────────────
+// function CopyBtn({ value }) {
+//   const [copied, setCopied] = useState(false);
+//   const handleCopy = () => {
+//     navigator.clipboard.writeText(value);
+//     setCopied(true);
+//     setTimeout(() => setCopied(false), 1500);
+//   };
+//   return (
+//     <button
+//       onClick={handleCopy}
+//       className="text-[10px] px-2 py-0.5 rounded border border-richblack-600 text-richblack-300 hover:border-yellow-300 hover:text-yellow-300 transition-all duration-150 shrink-0"
+//     >
+//       {copied ? "✓ Copied" : "Copy"}
+//     </button>
+//   );
+// }
+
+// // ── Test Credentials — Fixed Top Left Floating Dropdown ─────────────────────
+// function TestCredentials() {
+//   const [open, setOpen] = useState(false);
+//   const accounts = [
+//     {
+//       role: "Student",
+//       email: "test.student@eshiksha.com",
+//       password: "Student@123",
+//       color: "#22d3ee",
+//     },
+//     {
+//       role: "Instructor",
+//       email: "test.instructor@eshiksha.com",
+//       password: "Instructor@123",
+//       color: "#a78bfa",
+//     },
+//   ];
+
+//   return (
+//     <>
+//       {/* Fixed Top-Left Container */}
+//       <div className="fixed top-20 left-4 z-50 w-56">
+//         {/* Toggle Header */}
+//         <button
+//           onClick={() => setOpen(!open)}
+//           className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-richblack-900 border border-richblack-700 hover:border-yellow-400 transition-all duration-200 shadow-xl group"
+//         >
+//           <div className="flex items-center gap-2">
+//             <span className="text-sm">🔑</span>
+//             <span className="text-xs font-semibold text-richblack-100 group-hover:text-yellow-300 transition-colors">
+//               Test Credentials
+//             </span>
+//           </div>
+//           <span
+//             className="text-richblack-500 text-xs transition-transform duration-300"
+//             style={{
+//               display: "inline-block",
+//               transform: open ? "rotate(180deg)" : "rotate(0deg)",
+//             }}
+//           >
+//             ▾
+//           </span>
+//         </button>
+
+//         {/* Dropdown Panel */}
+//         {open && (
+//           <div className="mt-1.5 rounded-xl bg-richblack-900 border border-richblack-700 shadow-2xl overflow-hidden">
+//             {accounts.map((acc, i) => (
+//               <div
+//                 key={acc.role}
+//                 className={`px-3 py-3 ${i < accounts.length - 1 ? "border-b border-richblack-800" : ""}`}
+//               >
+//                 {/* Role label */}
+//                 <div className="flex items-center gap-1.5 mb-2">
+//                   <span
+//                     className="w-1.5 h-1.5 rounded-full"
+//                     style={{ background: acc.color, display: "inline-block" }}
+//                   />
+//                   <span
+//                     className="text-[11px] font-bold"
+//                     style={{ color: acc.color }}
+//                   >
+//                     {acc.role}
+//                   </span>
+//                 </div>
+
+//                 {/* Email */}
+//                 <div className="flex items-center justify-between gap-1 mb-1.5 bg-richblack-800 rounded-lg px-2 py-1.5">
+//                   <span className="text-[10px] text-richblack-300 font-mono truncate flex-1">
+//                     {acc.email}
+//                   </span>
+//                   <CopyBtn value={acc.email} />
+//                 </div>
+
+//                 {/* Password */}
+//                 <div className="flex items-center justify-between gap-1 bg-richblack-800 rounded-lg px-2 py-1.5">
+//                   <span className="text-[10px] text-richblack-300 font-mono flex-1">
+//                     {acc.password}
+//                   </span>
+//                   <CopyBtn value={acc.password} />
+//                 </div>
+//               </div>
+//             ))}
+
+//             <div className="px-3 py-1.5 bg-richblack-800/40 border-t border-richblack-800">
+//               <p className="text-[9px] text-richblack-600 text-center tracking-wide">
+//                 click outside to close
+//               </p>
+//             </div>
+//           </div>
+//         )}
+//       </div>
+
+//       {/* Invisible overlay to close on outside click */}
+//       {open && (
+//         <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
+//       )}
+//     </>
+//   );
+// }
+// // ────────────────────────────────────────────────────────────────────────────
+
+// function Home() {
+//   const [CatalogPageData, setCatalogPageData] = useState(null);
+//   const categoryID = "683d5a8436ba60c2aadaeb8c";
+
+//   useEffect(() => {
+//     const fetchCatalogPageData = async () => {
+//       const result = await getCatalogaPageData(categoryID, dispatch);
+//       setCatalogPageData(result);
+//     };
+//     if (categoryID) {
+//       fetchCatalogPageData();
+//     }
+//   }, [categoryID]);
+//   const dispatch = useDispatch();
+
+//   return (
+//     <div>
+//       <div className=" mx-auto relative flex flex-col w-11/12 items-center justify-between text-white ">
+//         <Link
+//           onClick={() => {
+//             dispatch(setProgress(100));
+//           }}
+//           to={"/signup"}
+//         >
+//           <div className="text-center mt-14">
+//             <div className="inline-flex items-center space-x-4 px-8 py-4 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-full border border-white/20 backdrop-blur-xl">
+//               <div className="flex space-x-2">
+//                 <div className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce"></div>
+//                 <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce delay-100"></div>
+//                 <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce delay-200"></div>
+//               </div>
+//               <span className="text-slate-300 font-medium">
+//                 More amazing courses coming soon...
+//               </span>
+//               <div className="flex space-x-2">
+//                 <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce delay-300"></div>
+//                 <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce delay-400"></div>
+//                 <div className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce delay-500"></div>
+//               </div>
+//             </div>
+//           </div>
+//         </Link>
+
+//         <div className="text-center text-3xl md:text-4xl font-semibold mt-7">
+//           Unlock Your Potential Through{" "}
+//           <HighlightText text={"Coding Expertise"} />
+//         </div>
+
+//         <div className=" mt-4 w-[90%] text-left md:text-center text-sm md:text-lg font-bold text-richblack-300">
+//           Through our online coding classes, you can study at your own speed,
+//           from any location, and benefit from a rich collection of materials,
+//           such as interactive projects, assessments, and tailored guidance from
+//           mentors
+//         </div>
+
+//         <div className="flex flex-row gap-7 mt-8">
+//           <CTAButton active={true} linkto={"/signup"}>
+//             Learn More
+//           </CTAButton>
+//           <CTAButton active={false} linkto={"/login"}>
+//             Book a Demo
+//           </CTAButton>
+//         </div>
+
+//         {/* Test Credentials Button → opens modal */}
+//         <div className="mt-3">
+//           <TestCredentials />
+//         </div>
+
+//         <div className="w-full px-4 sm:px-6 lg:px-8">
+//           {/* Feature Cards Grid */}
+//           <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-12 md:mt-16">
+//             {/* Feature 1: Interactive Learning */}
+//             <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-white/20 hover:border-cyan-400/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
+//               <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:rotate-6 transition-transform duration-300">
+//                 <div className="w-5 h-5 sm:w-6 sm:h-6 bg-white rounded-sm"></div>
+//               </div>
+//               <h3 className="text-white font-bold text-base sm:text-lg mb-1.5 sm:mb-2">
+//                 Interactive Learning
+//               </h3>
+//               <p className="text-slate-400 text-xs sm:text-sm group-hover:text-slate-300 transition-colors leading-relaxed">
+//                 Hands-on coding experiences
+//               </p>
+//             </div>
+
+//             {/* Feature 2: Expert Mentors */}
+//             <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-white/20 hover:border-purple-400/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
+//               <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-purple-400 to-violet-500 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:rotate-6 transition-transform duration-300">
+//                 <div className="w-5 h-5 sm:w-6 sm:h-6 bg-white rounded-full"></div>
+//               </div>
+//               <h3 className="text-white font-bold text-base sm:text-lg mb-1.5 sm:mb-2">
+//                 Expert Mentors
+//               </h3>
+//               <p className="text-slate-400 text-xs sm:text-sm group-hover:text-slate-300 transition-colors leading-relaxed">
+//                 Industry professionals guide you
+//               </p>
+//             </div>
+
+//             {/* Feature 3: Certified Courses */}
+//             <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-white/20 hover:border-pink-400/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/20">
+//               <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-pink-400 to-rose-500 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:rotate-6 transition-transform duration-300">
+//                 <div className="w-5 h-5 sm:w-6 sm:h-6 bg-white rounded-lg transform rotate-45"></div>
+//               </div>
+//               <h3 className="text-white font-bold text-base sm:text-lg mb-1.5 sm:mb-2">
+//                 Certified Courses
+//               </h3>
+//               <p className="text-slate-400 text-xs sm:text-sm group-hover:text-slate-300 transition-colors leading-relaxed">
+//                 Industry-recognized credentials
+//               </p>
+//             </div>
+
+//             {/* Feature 4: Fast Track Learning */}
+//             <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-white/20 hover:border-emerald-400/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20">
+//               <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-emerald-400 to-green-500 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:rotate-6 transition-transform duration-300">
+//                 <div className="w-5 h-5 sm:w-6 sm:h-6 bg-white rounded-full relative">
+//                   <div className="absolute inset-2 bg-emerald-400 rounded-full"></div>
+//                 </div>
+//               </div>
+//               <h3 className="text-white font-bold text-base sm:text-lg mb-1.5 sm:mb-2">
+//                 Fast Track Learning
+//               </h3>
+//               <p className="text-slate-400 text-xs sm:text-sm group-hover:text-slate-300 transition-colors leading-relaxed">
+//                 Accelerated skill development
+//               </p>
+//             </div>
+//           </div>
+
+//           {/* Feature Highlights */}
+//           <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 mt-6 sm:mt-8 text-xs sm:text-sm">
+//             <div className="flex items-center gap-1.5 sm:gap-2 text-cyan-400 bg-cyan-400/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-cyan-400/20 hover:bg-cyan-400/20 transition-all duration-300">
+//               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+//               <span className="font-medium whitespace-nowrap">
+//                 Interactive Learning
+//               </span>
+//             </div>
+//             <div className="flex items-center gap-1.5 sm:gap-2 text-purple-400 bg-purple-400/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-purple-400/20 hover:bg-purple-400/20 transition-all duration-300">
+//               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-400 rounded-full animate-pulse"></div>
+//               <span className="font-medium whitespace-nowrap">
+//                 Expert Mentors
+//               </span>
+//             </div>
+//             <div className="flex items-center gap-1.5 sm:gap-2 text-pink-400 bg-pink-400/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-pink-400/20 hover:bg-pink-400/20 transition-all duration-300">
+//               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-pink-400 rounded-full animate-pulse"></div>
+//               <span className="font-medium whitespace-nowrap">
+//                 Certified Courses
+//               </span>
+//             </div>
+//             <div className="hidden sm:flex items-center gap-1.5 sm:gap-2 text-emerald-400 bg-emerald-400/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-emerald-400/20 hover:bg-emerald-400/20 transition-all duration-300">
+//               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+//               <span className="font-medium whitespace-nowrap">Fast Track</span>
+//             </div>
+//           </div>
+//         </div>
+
+//         <style jsx>{`
+//           @media (min-width: 475px) {
+//             .xs\:grid-cols-2 {
+//               grid-template-columns: repeat(2, minmax(0, 1fr));
+//             }
+//           }
+//           @media (prefers-reduced-motion: reduce) {
+//             .group {
+//               transition: none;
+//             }
+//             .animate-pulse {
+//               animation: none;
+//             }
+//           }
+//           @media (max-width: 640px) {
+//             .group {
+//               cursor: pointer;
+//               -webkit-tap-highlight-color: transparent;
+//             }
+//           }
+//         `}</style>
+
+//         <div>
+//           <CodeBlocks
+//             position={"lg:flex-row"}
+//             heading={
+//               <div className=" font-semibold text-2xl lg:text-4xl sm:w-full">
+//                 Unlock Your
+//                 <HighlightText text={"coding potential"} />
+//                 with our online courses
+//               </div>
+//             }
+//             subheading={
+//               "Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you."
+//             }
+//             ctabtn1={{
+//               btnText: "Try it yourself",
+//               linkto: "/signup",
+//               active: true,
+//             }}
+//             ctabtn2={{ btnText: "learn more", linkto: "/login", active: false }}
+//             codeblock={`<<!DOCTYPE html>\n<html>\n<head><title>e-shiksha</title>\n</head>\n<body>\n<h1><ahref="/">shahbaz</a>\n</h1>\n<nav><ahref="one/">One</a><ahref="two/">Two</a><ahref="three/">Three</a>\n</nav>`}
+//             codeColor={"text-rose-800"}
+//             backgroudGradient={"grad2"}
+//           />
+//         </div>
+
+//         <div className=" mx-auto box-content w-full max-w-maxContentTab px- py-12 lg:max-w-maxContent">
+//           <h2 className="section_heading mb-6 md:text-3xl text-xl">
+//             Most Popular Courses
+//           </h2>
+//           <CourseSlider Courses={CatalogPageData?.selectedCourses} />
+//         </div>
+//         <div className=" mx-auto box-content w-full max-w-maxContentTab px- py-12 lg:max-w-maxContent">
+//           <h2 className="section_heading mb-6 md:text-3xl text-xl">
+//             Students are learning
+//           </h2>
+//           <CourseSlider Courses={CatalogPageData?.differentCourses} />
+//         </div>
+
+//         <div>
+//           <CodeBlocks
+//             position={"lg:flex-row-reverse"}
+//             heading={
+//               <div className="text-4xl font-semibold">
+//                 Start
+//                 <HighlightText text={"coding in seconds"} />
+//               </div>
+//             }
+//             subheading={
+//               "Go ahead, give it a try. Our hands-on learning environment means you'll be writing real code from your very first lesson."
+//             }
+//             ctabtn1={{
+//               btnText: "Continue Lesson",
+//               linkto: "/signup",
+//               active: true,
+//             }}
+//             ctabtn2={{ btnText: "learn more", linkto: "/login", active: false }}
+//             codeblock={`<<!DOCTYPE html>\n<html>\n<head><title>Example</title>\n</head>\n<body>\n<h1><ahref="/">Header</a>\n</h1>\n<nav><ahref="one/">One</a><ahref="two/">Two</a><ahref="three/">Three</a>\n</nav>`}
+//             codeColor={"text-caribbeangreen-200"}
+//             backgroudGradient={"grad"}
+//           />
+//         </div>
+
+//         <ExploreMore />
+//       </div>
+
+//       <div className="hidden lg:block lg:h-[200px]"></div>
+
+//       <div className="bg-gradient-to-br from-richblack-900 to-richblack-800 text-white">
+//         <div className="homepage_bg h-[310px]">
+//           <div className="w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-5 mx-auto">
+//             <div className="h-[150px]"></div>
+//             <div className="flex flex-row gap-7 text-white ">
+//               <CTAButton active={true} linkto={"/catalog/Web Developement"}>
+//                 <div className="flex items-center gap-3">
+//                   Explore Full Catalog
+//                   <FaArrowRight />
+//                 </div>
+//               </CTAButton>
+//               <CTAButton active={false} linkto={"/signup"}>
+//                 <div>Learn more</div>
+//               </CTAButton>
+//             </div>
+//           </div>
+//         </div>
+
+//         <div className="mx-auto w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-7">
+//           <div className="flex flex-row gap-5 mb-10 mt-[95px]">
+//             <div className="text-4xl font-semibold w-[45%]">
+//               Get the Skills you need for a
+//               <HighlightText text={"Job that is in demand"} />
+//             </div>
+//             <div className="flex flex-col gap-10 w-[40%] items-start">
+//               <div className="text-[16px]">
+//                 The modern E-Shiksha is the dictates its own terms. Today, to be
+//                 a competitive specialist requires more than professional skills.
+//               </div>
+//               <CTAButton active={true} linkto={"/signup"}>
+//                 <div>Learn more</div>
+//               </CTAButton>
+//             </div>
+//           </div>
+
+//           <TimelineSection />
+//           <LearningLanguageSection />
+//         </div>
+//       </div>
+
+//       <div className="w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8 first-letter bg-richblack-900 text-white">
+//         <InstructorSection />
+//       </div>
+
+//       <div className=" mb-16 mt-3">
+//         <h2 clasName="text-center text-2xl md:text-4xl font-semibold mt-8 text-richblack-5 mb-5"></h2>
+//         <RatingSlider />
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Home;
+
+
+
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import CTAButton from "../Components/core/HomePage/Button";
 import HighlightText from "../Components/core/HomePage/HighlightText";
-import Banner from "../assets/Images/banner.mp4";
 import CodeBlocks from "../Components/core/HomePage/CodeBlocks";
 import TimelineSection from "../Components/core/HomePage/TimelineSection";
 import LearningLanguageSection from "../Components/core/HomePage/LearningLanguageSection";
@@ -13,12 +451,11 @@ import { useDispatch } from "react-redux";
 import { setProgress } from "../slices/loadingBarSlice";
 import { getCatalogaPageData } from "../services/operations/pageAndComponentData";
 import CourseSlider from "../Components/core/Catalog/CourseSlider";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RatingSlider from "../Components/core/Ratings/RatingSlider";
 import TimelineSection2 from "../Components/core/HomePage/TimelineSection2";
 
-// ── Test Credentials Modal ───────────────────────────────────────────────────
+// ── Copy Button ──────────────────────────────────────────────────────────────
 function CopyBtn({ value }) {
   const [copied, setCopied] = useState(false);
   const handleCopy = () => {
@@ -40,25 +477,13 @@ function CopyBtn({ value }) {
 function TestCredentials() {
   const [open, setOpen] = useState(false);
   const accounts = [
-    {
-      role: "Student",
-      email: "test.student@eshiksha.com",
-      password: "Student@123",
-      color: "#22d3ee",
-    },
-    {
-      role: "Instructor",
-      email: "test.instructor@eshiksha.com",
-      password: "Instructor@123",
-      color: "#a78bfa",
-    },
+    { role: "Student",    email: "test.student@eshiksha.com",    password: "Student@123",    color: "#22d3ee" },
+    { role: "Instructor", email: "test.instructor@eshiksha.com", password: "Instructor@123", color: "#a78bfa" },
   ];
 
   return (
     <>
-      {/* Fixed Top-Left Container */}
       <div className="fixed top-20 left-4 z-50 w-56">
-        {/* Toggle Header */}
         <button
           onClick={() => setOpen(!open)}
           className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-richblack-900 border border-richblack-700 hover:border-yellow-400 transition-all duration-200 shadow-xl group"
@@ -70,17 +495,13 @@ function TestCredentials() {
             </span>
           </div>
           <span
-            className="text-richblack-500 text-xs transition-transform duration-300"
-            style={{
-              display: "inline-block",
-              transform: open ? "rotate(180deg)" : "rotate(0deg)",
-            }}
+            className="text-richblack-500 text-xs"
+            style={{ display: "inline-block", transform: open ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s" }}
           >
             ▾
           </span>
         </button>
 
-        {/* Dropdown Panel */}
         {open && (
           <div className="mt-1.5 rounded-xl bg-richblack-900 border border-richblack-700 shadow-2xl overflow-hidden">
             {accounts.map((acc, i) => (
@@ -88,51 +509,28 @@ function TestCredentials() {
                 key={acc.role}
                 className={`px-3 py-3 ${i < accounts.length - 1 ? "border-b border-richblack-800" : ""}`}
               >
-                {/* Role label */}
                 <div className="flex items-center gap-1.5 mb-2">
-                  <span
-                    className="w-1.5 h-1.5 rounded-full"
-                    style={{ background: acc.color, display: "inline-block" }}
-                  />
-                  <span
-                    className="text-[11px] font-bold"
-                    style={{ color: acc.color }}
-                  >
-                    {acc.role}
-                  </span>
+                  <span className="w-1.5 h-1.5 rounded-full" style={{ background: acc.color, display: "inline-block" }} />
+                  <span className="text-[11px] font-bold" style={{ color: acc.color }}>{acc.role}</span>
                 </div>
-
-                {/* Email */}
                 <div className="flex items-center justify-between gap-1 mb-1.5 bg-richblack-800 rounded-lg px-2 py-1.5">
-                  <span className="text-[10px] text-richblack-300 font-mono truncate flex-1">
-                    {acc.email}
-                  </span>
+                  <span className="text-[10px] text-richblack-300 font-mono truncate flex-1">{acc.email}</span>
                   <CopyBtn value={acc.email} />
                 </div>
-
-                {/* Password */}
                 <div className="flex items-center justify-between gap-1 bg-richblack-800 rounded-lg px-2 py-1.5">
-                  <span className="text-[10px] text-richblack-300 font-mono flex-1">
-                    {acc.password}
-                  </span>
+                  <span className="text-[10px] text-richblack-300 font-mono flex-1">{acc.password}</span>
                   <CopyBtn value={acc.password} />
                 </div>
               </div>
             ))}
-
             <div className="px-3 py-1.5 bg-richblack-800/40 border-t border-richblack-800">
-              <p className="text-[9px] text-richblack-600 text-center tracking-wide">
-                click outside to close
-              </p>
+              <p className="text-[9px] text-richblack-600 text-center tracking-wide">click outside to close</p>
             </div>
           </div>
         )}
       </div>
 
-      {/* Invisible overlay to close on outside click */}
-      {open && (
-        <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
-      )}
+      {open && <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />}
     </>
   );
 }
@@ -141,6 +539,7 @@ function TestCredentials() {
 function Home() {
   const [CatalogPageData, setCatalogPageData] = useState(null);
   const categoryID = "683d5a8436ba60c2aadaeb8c";
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchCatalogPageData = async () => {
@@ -151,17 +550,14 @@ function Home() {
       fetchCatalogPageData();
     }
   }, [categoryID]);
-  const dispatch = useDispatch();
 
   return (
     <div>
-      <div className=" mx-auto relative flex flex-col w-11/12 items-center justify-between text-white ">
-        <Link
-          onClick={() => {
-            dispatch(setProgress(100));
-          }}
-          to={"/signup"}
-        >
+      {/* ── Fixed Top-Left Test Credentials ── */}
+      <TestCredentials />
+
+      <div className="mx-auto relative flex flex-col w-11/12 items-center justify-between text-white">
+        <Link onClick={() => dispatch(setProgress(100))} to={"/signup"}>
           <div className="text-center mt-14">
             <div className="inline-flex items-center space-x-4 px-8 py-4 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-full border border-white/20 backdrop-blur-xl">
               <div className="flex space-x-2">
@@ -169,9 +565,7 @@ function Home() {
                 <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce delay-100"></div>
                 <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce delay-200"></div>
               </div>
-              <span className="text-slate-300 font-medium">
-                More amazing courses coming soon...
-              </span>
+              <span className="text-slate-300 font-medium">More amazing courses coming soon...</span>
               <div className="flex space-x-2">
                 <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce delay-300"></div>
                 <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce delay-400"></div>
@@ -182,108 +576,69 @@ function Home() {
         </Link>
 
         <div className="text-center text-3xl md:text-4xl font-semibold mt-7">
-          Unlock Your Potential Through{" "}
-          <HighlightText text={"Coding Expertise"} />
+          Unlock Your Potential Through <HighlightText text={"Coding Expertise"} />
         </div>
 
-        <div className=" mt-4 w-[90%] text-left md:text-center text-sm md:text-lg font-bold text-richblack-300">
-          Through our online coding classes, you can study at your own speed,
-          from any location, and benefit from a rich collection of materials,
-          such as interactive projects, assessments, and tailored guidance from
-          mentors
+        <div className="mt-4 w-[90%] text-left md:text-center text-sm md:text-lg font-bold text-richblack-300">
+          Through our online coding classes, you can study at your own speed, from any location,
+          and benefit from a rich collection of materials, such as interactive projects, assessments,
+          and tailored guidance from mentors
         </div>
 
         <div className="flex flex-row gap-7 mt-8">
-          <CTAButton active={true} linkto={"/signup"}>
-            Learn More
-          </CTAButton>
-          <CTAButton active={false} linkto={"/login"}>
-            Book a Demo
-          </CTAButton>
-        </div>
-
-        {/* Test Credentials Button → opens modal */}
-        <div className="mt-3">
-          <TestCredentials />
+          <CTAButton active={true} linkto={"/signup"}>Learn More</CTAButton>
+          <CTAButton active={false} linkto={"/login"}>Book a Demo</CTAButton>
         </div>
 
         <div className="w-full px-4 sm:px-6 lg:px-8">
-          {/* Feature Cards Grid */}
-          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-12 md:mt-16">
-            {/* Feature 1: Interactive Learning */}
-            <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-white/20 hover:border-cyan-400/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-12 md:mt-16">
+            <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-white/20 hover:border-cyan-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
               <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:rotate-6 transition-transform duration-300">
                 <div className="w-5 h-5 sm:w-6 sm:h-6 bg-white rounded-sm"></div>
               </div>
-              <h3 className="text-white font-bold text-base sm:text-lg mb-1.5 sm:mb-2">
-                Interactive Learning
-              </h3>
-              <p className="text-slate-400 text-xs sm:text-sm group-hover:text-slate-300 transition-colors leading-relaxed">
-                Hands-on coding experiences
-              </p>
+              <h3 className="text-white font-bold text-base sm:text-lg mb-1.5 sm:mb-2">Interactive Learning</h3>
+              <p className="text-slate-400 text-xs sm:text-sm group-hover:text-slate-300 transition-colors leading-relaxed">Hands-on coding experiences</p>
             </div>
 
-            {/* Feature 2: Expert Mentors */}
-            <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-white/20 hover:border-purple-400/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
+            <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-white/20 hover:border-purple-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
               <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-purple-400 to-violet-500 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:rotate-6 transition-transform duration-300">
                 <div className="w-5 h-5 sm:w-6 sm:h-6 bg-white rounded-full"></div>
               </div>
-              <h3 className="text-white font-bold text-base sm:text-lg mb-1.5 sm:mb-2">
-                Expert Mentors
-              </h3>
-              <p className="text-slate-400 text-xs sm:text-sm group-hover:text-slate-300 transition-colors leading-relaxed">
-                Industry professionals guide you
-              </p>
+              <h3 className="text-white font-bold text-base sm:text-lg mb-1.5 sm:mb-2">Expert Mentors</h3>
+              <p className="text-slate-400 text-xs sm:text-sm group-hover:text-slate-300 transition-colors leading-relaxed">Industry professionals guide you</p>
             </div>
 
-            {/* Feature 3: Certified Courses */}
-            <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-white/20 hover:border-pink-400/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/20">
+            <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-white/20 hover:border-pink-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/20">
               <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-pink-400 to-rose-500 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:rotate-6 transition-transform duration-300">
                 <div className="w-5 h-5 sm:w-6 sm:h-6 bg-white rounded-lg transform rotate-45"></div>
               </div>
-              <h3 className="text-white font-bold text-base sm:text-lg mb-1.5 sm:mb-2">
-                Certified Courses
-              </h3>
-              <p className="text-slate-400 text-xs sm:text-sm group-hover:text-slate-300 transition-colors leading-relaxed">
-                Industry-recognized credentials
-              </p>
+              <h3 className="text-white font-bold text-base sm:text-lg mb-1.5 sm:mb-2">Certified Courses</h3>
+              <p className="text-slate-400 text-xs sm:text-sm group-hover:text-slate-300 transition-colors leading-relaxed">Industry-recognized credentials</p>
             </div>
 
-            {/* Feature 4: Fast Track Learning */}
-            <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-white/20 hover:border-emerald-400/50 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20">
+            <div className="group bg-gradient-to-br from-slate-800/60 to-slate-900/80 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-white/20 hover:border-emerald-400/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20">
               <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-emerald-400 to-green-500 rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:rotate-6 transition-transform duration-300">
                 <div className="w-5 h-5 sm:w-6 sm:h-6 bg-white rounded-full relative">
                   <div className="absolute inset-2 bg-emerald-400 rounded-full"></div>
                 </div>
               </div>
-              <h3 className="text-white font-bold text-base sm:text-lg mb-1.5 sm:mb-2">
-                Fast Track Learning
-              </h3>
-              <p className="text-slate-400 text-xs sm:text-sm group-hover:text-slate-300 transition-colors leading-relaxed">
-                Accelerated skill development
-              </p>
+              <h3 className="text-white font-bold text-base sm:text-lg mb-1.5 sm:mb-2">Fast Track Learning</h3>
+              <p className="text-slate-400 text-xs sm:text-sm group-hover:text-slate-300 transition-colors leading-relaxed">Accelerated skill development</p>
             </div>
           </div>
 
-          {/* Feature Highlights */}
           <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 mt-6 sm:mt-8 text-xs sm:text-sm">
             <div className="flex items-center gap-1.5 sm:gap-2 text-cyan-400 bg-cyan-400/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-cyan-400/20 hover:bg-cyan-400/20 transition-all duration-300">
               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-              <span className="font-medium whitespace-nowrap">
-                Interactive Learning
-              </span>
+              <span className="font-medium whitespace-nowrap">Interactive Learning</span>
             </div>
             <div className="flex items-center gap-1.5 sm:gap-2 text-purple-400 bg-purple-400/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-purple-400/20 hover:bg-purple-400/20 transition-all duration-300">
               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-400 rounded-full animate-pulse"></div>
-              <span className="font-medium whitespace-nowrap">
-                Expert Mentors
-              </span>
+              <span className="font-medium whitespace-nowrap">Expert Mentors</span>
             </div>
             <div className="flex items-center gap-1.5 sm:gap-2 text-pink-400 bg-pink-400/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-pink-400/20 hover:bg-pink-400/20 transition-all duration-300">
               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-pink-400 rounded-full animate-pulse"></div>
-              <span className="font-medium whitespace-nowrap">
-                Certified Courses
-              </span>
+              <span className="font-medium whitespace-nowrap">Certified Courses</span>
             </div>
             <div className="hidden sm:flex items-center gap-1.5 sm:gap-2 text-emerald-400 bg-emerald-400/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-emerald-400/20 hover:bg-emerald-400/20 transition-all duration-300">
               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-emerald-400 rounded-full animate-pulse"></div>
@@ -292,46 +647,16 @@ function Home() {
           </div>
         </div>
 
-        <style jsx>{`
-          @media (min-width: 475px) {
-            .xs\:grid-cols-2 {
-              grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-          }
-          @media (prefers-reduced-motion: reduce) {
-            .group {
-              transition: none;
-            }
-            .animate-pulse {
-              animation: none;
-            }
-          }
-          @media (max-width: 640px) {
-            .group {
-              cursor: pointer;
-              -webkit-tap-highlight-color: transparent;
-            }
-          }
-        `}</style>
-
         <div>
           <CodeBlocks
             position={"lg:flex-row"}
             heading={
-              <div className=" font-semibold text-2xl lg:text-4xl sm:w-full">
-                Unlock Your
-                <HighlightText text={"coding potential"} />
-                with our online courses
+              <div className="font-semibold text-2xl lg:text-4xl sm:w-full">
+                Unlock Your <HighlightText text={"coding potential"} /> with our online courses
               </div>
             }
-            subheading={
-              "Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you."
-            }
-            ctabtn1={{
-              btnText: "Try it yourself",
-              linkto: "/signup",
-              active: true,
-            }}
+            subheading={"Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you."}
+            ctabtn1={{ btnText: "Try it yourself", linkto: "/signup", active: true }}
             ctabtn2={{ btnText: "learn more", linkto: "/login", active: false }}
             codeblock={`<<!DOCTYPE html>\n<html>\n<head><title>e-shiksha</title>\n</head>\n<body>\n<h1><ahref="/">shahbaz</a>\n</h1>\n<nav><ahref="one/">One</a><ahref="two/">Two</a><ahref="three/">Three</a>\n</nav>`}
             codeColor={"text-rose-800"}
@@ -339,16 +664,13 @@ function Home() {
           />
         </div>
 
-        <div className=" mx-auto box-content w-full max-w-maxContentTab px- py-12 lg:max-w-maxContent">
-          <h2 className="section_heading mb-6 md:text-3xl text-xl">
-            Most Popular Courses
-          </h2>
+        <div className="mx-auto box-content w-full max-w-maxContentTab py-12 lg:max-w-maxContent">
+          <h2 className="section_heading mb-6 md:text-3xl text-xl">Most Popular Courses</h2>
           <CourseSlider Courses={CatalogPageData?.selectedCourses} />
         </div>
-        <div className=" mx-auto box-content w-full max-w-maxContentTab px- py-12 lg:max-w-maxContent">
-          <h2 className="section_heading mb-6 md:text-3xl text-xl">
-            Students are learning
-          </h2>
+
+        <div className="mx-auto box-content w-full max-w-maxContentTab py-12 lg:max-w-maxContent">
+          <h2 className="section_heading mb-6 md:text-3xl text-xl">Students are learning</h2>
           <CourseSlider Courses={CatalogPageData?.differentCourses} />
         </div>
 
@@ -357,18 +679,11 @@ function Home() {
             position={"lg:flex-row-reverse"}
             heading={
               <div className="text-4xl font-semibold">
-                Start
-                <HighlightText text={"coding in seconds"} />
+                Start <HighlightText text={"coding in seconds"} />
               </div>
             }
-            subheading={
-              "Go ahead, give it a try. Our hands-on learning environment means you'll be writing real code from your very first lesson."
-            }
-            ctabtn1={{
-              btnText: "Continue Lesson",
-              linkto: "/signup",
-              active: true,
-            }}
+            subheading={"Go ahead, give it a try. Our hands-on learning environment means you'll be writing real code from your very first lesson."}
+            ctabtn1={{ btnText: "Continue Lesson", linkto: "/signup", active: true }}
             ctabtn2={{ btnText: "learn more", linkto: "/login", active: false }}
             codeblock={`<<!DOCTYPE html>\n<html>\n<head><title>Example</title>\n</head>\n<body>\n<h1><ahref="/">Header</a>\n</h1>\n<nav><ahref="one/">One</a><ahref="two/">Two</a><ahref="three/">Three</a>\n</nav>`}
             codeColor={"text-caribbeangreen-200"}
@@ -385,12 +700,9 @@ function Home() {
         <div className="homepage_bg h-[310px]">
           <div className="w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-5 mx-auto">
             <div className="h-[150px]"></div>
-            <div className="flex flex-row gap-7 text-white ">
+            <div className="flex flex-row gap-7 text-white">
               <CTAButton active={true} linkto={"/catalog/Web Developement"}>
-                <div className="flex items-center gap-3">
-                  Explore Full Catalog
-                  <FaArrowRight />
-                </div>
+                <div className="flex items-center gap-3">Explore Full Catalog <FaArrowRight /></div>
               </CTAButton>
               <CTAButton active={false} linkto={"/signup"}>
                 <div>Learn more</div>
@@ -402,31 +714,25 @@ function Home() {
         <div className="mx-auto w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-7">
           <div className="flex flex-row gap-5 mb-10 mt-[95px]">
             <div className="text-4xl font-semibold w-[45%]">
-              Get the Skills you need for a
-              <HighlightText text={"Job that is in demand"} />
+              Get the Skills you need for a <HighlightText text={"Job that is in demand"} />
             </div>
             <div className="flex flex-col gap-10 w-[40%] items-start">
               <div className="text-[16px]">
-                The modern E-Shiksha is the dictates its own terms. Today, to be
-                a competitive specialist requires more than professional skills.
+                The modern E-Shiksha dictates its own terms. Today, to be a competitive specialist requires more than professional skills.
               </div>
-              <CTAButton active={true} linkto={"/signup"}>
-                <div>Learn more</div>
-              </CTAButton>
+              <CTAButton active={true} linkto={"/signup"}><div>Learn more</div></CTAButton>
             </div>
           </div>
-
           <TimelineSection />
           <LearningLanguageSection />
         </div>
       </div>
 
-      <div className="w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8 first-letter bg-richblack-900 text-white">
+      <div className="w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
         <InstructorSection />
       </div>
 
-      <div className=" mb-16 mt-3">
-        <h2 clasName="text-center text-2xl md:text-4xl font-semibold mt-8 text-richblack-5 mb-5"></h2>
+      <div className="mb-16 mt-3">
         <RatingSlider />
       </div>
     </div>
