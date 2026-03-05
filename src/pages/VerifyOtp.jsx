@@ -6,7 +6,6 @@ import { useSelector,useDispatch } from 'react-redux';
 import { signUp } from '../services/operations/authAPI';
 import { useNavigate } from 'react-router-dom';
 import { sendOtp } from '../services/operations/authAPI';
-import { RxCountdownTimer } from 'react-icons/rx';
 
 const VerifyOtp = () => {
     const [otp, setOtp] = React.useState("");
