@@ -5,9 +5,9 @@
     "description": "An Ed Tech Web App for Students and Instructors",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#001B22",
+    "background_color": "#001B22", 
     "theme_color": "#001B22",
-    "icons": [
+    "icons": [ 
         {
           "src": "windows11/SmallTile.scale-100.png",
           "sizes": "71x71"
