@@ -89,6 +89,7 @@ database.connect();
 app.use(express.json());
 app.use(cookieParser());
 
+
 // --- CORS SETUP START ---
 const CORS_ORIGIN = process.env.CORS_ORIGIN || ""; // e.g., 'https://e-shiksha-v8yj.vercel.app,https://other.com'
 
